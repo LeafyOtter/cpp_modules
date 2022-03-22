@@ -2,6 +2,7 @@
 
 class Contact {
 	public:
+	void		getInput();
 	std::string firstName;
 	std::string lastName;
 	std::string phoneNumber;
