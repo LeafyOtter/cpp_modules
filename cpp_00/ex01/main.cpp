@@ -1,9 +1,13 @@
-#include "Contact.hpp"
-#include  <iostream>
+#include <iostream>
+#include <iomanip> 
+#include "PhoneBook.hpp"
 
 int main() {
-	Contact newContact;
+	PhoneBook	myPhoneBook;
 
-	newContact.getInput();
-	std::cout << "first name : " << newContact.firstName << std::endl;
+	myPhoneBook.add();
+	myPhoneBook.add();
+	myPhoneBook.add();
+
+	myPhoneBook.search();
 }

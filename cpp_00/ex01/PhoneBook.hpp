@@ -6,12 +6,12 @@ class PhoneBook {
 	public:
 	PhoneBook ();
 
-	void Add();
-	void Search();
+	void add();
+	void search();
+
+	Contact		ContactArray[8];
 
 	private:
-	int			sizeArray;
+	int			nbrContact;
 	int			indexLastContact;
-	bool		isFull;
-	Contact		ContactArray[8];
 };
