@@ -2,7 +2,8 @@
 
 class Contact {
 	public:
-	void		getInput();
+	void	getInput();
+	void	print();
 	std::string firstName;
 	std::string lastName;
 	std::string nickname;

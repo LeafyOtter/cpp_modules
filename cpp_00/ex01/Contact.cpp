@@ -3,15 +3,29 @@
 
 // TODO: can't get empty input
 
+void	Contact::print() {
+	std::cout << this->firstName << std::endl;
+	std::cout << this->lastName << std::endl;
+	std::cout << this->nickname << std::endl;
+	std::cout << this->phoneNumber << std::endl;
+	std::cout << this->darkestSecret << std::endl;
+}
+
+static std::string	getField(std::string msg, std::string str) {
+	do
+	{
+		std::cout << msg;
+		std::getline(std::cin, str);
+		if (str.empty())
+			std::cout << "Field can't be empty" << std::endl;
+	} while (str.empty());
+	return (str);
+}
+
 void	Contact::getInput() {
-	std::cout << "Insert first name : ";
-	std::getline(std::cin,this->firstName);
-	std::cout << "Insert last name : ";
-	std::getline(std::cin,this->lastName);
-	std::cout << "Insert nickname : ";
-	std::getline(std::cin,this->nickname);
-	std::cout << "Insert phone number: ";
-	std::getline(std::cin,this->phoneNumber);
-	std::cout << "Insert darkest secret ;) : ";
-	std::getline(std::cin,this->darkestSecret);
+	this->firstName = getField("Insert first name : ", this->firstName);
+	this->lastName = getField("Insert last name : ", this->lastName);
+	this->nickname = getField("Insert nickname : ", this->nickname);
+	this->phoneNumber = getField("Insert phone number: ", this->phoneNumber);
+	this->darkestSecret = getField("Insert darkest secret ;) : ", this->darkestSecret);
 }
