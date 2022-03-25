@@ -1,3 +1,8 @@
+#pragma once
+#ifndef __CONTACT_H__
+#define __CONTACT_H__
+
+
 #include <string>
 
 class Contact {
@@ -10,3 +15,5 @@ class Contact {
 	std::string phoneNumber;
 	std::string darkestSecret;
 };
+
+#endif
