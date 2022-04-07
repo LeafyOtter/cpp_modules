@@ -58,11 +58,13 @@ ClapTrap & ClapTrap::operator = (const ClapTrap &rhs)
  * 	Print functions
  */
 
-static void	print_name( const std::string &name ) {
+static void	print_name( const std::string &name )
+{
 	std::cout << "ClapTrap " << name << " ";
 }
 
-static void print_damage( unsigned int amount ) {
+static void print_damage( unsigned int amount )
+{
 	std::cout << amount << " points of damage !";
 }
 
