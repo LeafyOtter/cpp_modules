@@ -10,7 +10,7 @@ ClapTrap::ClapTrap( void ) :
 	_energyPoint(10),
 	_attackDamage(0)
 {
-	LOG_MSG("Default constructor called");
+	LOG_MSG("Default constructor for ClapTrap called");
 }
 
 ClapTrap::ClapTrap( const std::string name ) :
@@ -19,7 +19,20 @@ ClapTrap::ClapTrap( const std::string name ) :
 	_energyPoint(10),
 	_attackDamage(0)
 {
-	LOG_MSG("Default constructor called with string");
+	LOG_MSG("Default constructor for ClapTrap called with string");
+}
+
+ClapTrap::ClapTrap(
+	const std::string name,
+	unsigned int hitPoint,
+	unsigned int energyPoint,
+	unsigned int attackDamage) :
+	_name(name),
+	_hitPoint(hitPoint),
+	_energyPoint(energyPoint),
+	_attackDamage(attackDamage)
+{
+	LOG_MSG("Default constructor for ClapTrap called with all paramaters");
 }
 
 ClapTrap::ClapTrap( const ClapTrap &rhs) :
@@ -28,7 +41,7 @@ ClapTrap::ClapTrap( const ClapTrap &rhs) :
 	_energyPoint(rhs._energyPoint),
 	_attackDamage(rhs._attackDamage)
 {
-	LOG_MSG("Copy constructor called");
+	LOG_MSG("Copy constructor for ClapTrap called");
 } 
 
 /*
@@ -37,7 +50,7 @@ ClapTrap::ClapTrap( const ClapTrap &rhs) :
 
 ClapTrap::~ClapTrap( void )
 {
-	LOG_MSG("Default destructor called");
+	LOG_MSG("Default destructor for ClapTrap called");
 }
 
 /*
@@ -46,7 +59,7 @@ ClapTrap::~ClapTrap( void )
 
 ClapTrap & ClapTrap::operator = (const ClapTrap &rhs)
 {
-	LOG_MSG("Copy assignement operator called");
+	LOG_MSG("Copy assignement operator for ClapTrap called");
 	this->_name = rhs._name;
 	this->_hitPoint = rhs._hitPoint;
 	this->_energyPoint = rhs._energyPoint;
@@ -58,35 +71,60 @@ ClapTrap & ClapTrap::operator = (const ClapTrap &rhs)
  * 	Print functions
  */
 
-static void	print_name( const std::string &name )
+static void	printName( const std::string &name )
 {
 	std::cout << "ClapTrap " << name << " ";
 }
 
-static void print_damage( unsigned int amount )
+static void printDamage( unsigned int amount )
 {
 	std::cout << amount << " points of damage !";
 }
 
-static void	print_attack_message(
+static void	printAttackMessage(
 		const std::string &name, 
 		const std::string &target,
 		unsigned int amount)
 {
-	print_name(name);
+	printName(name);
 	std::cout << "attacks " << target << " for ";
-	print_damage(amount);
+	printDamage(amount);
 	std::cout << std::endl;
 }
 
-static void print_damage_message(
-		const std::string &name,	
-		const std::string &target,
+static void printDamageMessage(
+		const std::string &name,
 		unsigned int amount)
 {
-	print_name(name);
+	printName(name);
 	std::cout << "took ";
-	print_damage(amount);
+	printDamage(amount);
+	std::cout << std::endl;
+}
+
+static void printNoEnergy(
+		const std::string &name)
+{
+	printName(name);
+	std::cout << "has no energy left. ";
+	std::cout << std::endl;
+}
+
+static void printNoHitPoint(
+		const std::string &name)
+{
+	printName(name);
+	std::cout << "has no hit points left. ";
+	std::cout << std::endl;	
+}
+
+static void printRepair(
+		const std::string &name,
+		unsigned int amount)
+{
+	printName(name);
+	std::cout << "repaired themselves for ";
+	printDamage(amount);
 	std::cout << std::endl;
 }
 
@@ -99,27 +137,25 @@ void	ClapTrap::attack( const std::string& target )
 	unsigned int	energyPoint = _energyPoint;
 	unsigned int	hitPoint = _hitPoint;
 
-	PRINT_NAME(_name);
 	if (!hitPoint)
-		NO_HIT_POINT_MSG(_name);
+		printNoHitPoint(_name);
 	if (!energyPoint)
-		NO_ENERGY_MSG(_name);
+		printNoEnergy(_name);
 	if (!hitPoint || !energyPoint)
 		return ;
-	ATK_MSG(target, _attackDamage);
+	printAttackMessage(_name, target, _attackDamage);
 	_energyPoint -= 1;
 }
 
 void	ClapTrap::takeDamage( unsigned int amount )
 {
-	PRINT_NAME(_name);
 	if (!_hitPoint) {
 		_hitPoint = 0;
-		NO_HIT_POINT_MSG(_name);
+		printNoHitPoint(_name);
 		return ;
 	}
 	amount = _hitPoint <= amount ? _hitPoint : amount;
-	DMG_MSG(amount);
+	printDamageMessage(_name, amount);
 	_hitPoint -= amount;
 }
 
@@ -128,12 +164,11 @@ void	ClapTrap::beRepaired( unsigned int amount )
 	unsigned int	energyPoint = _energyPoint;
 	unsigned int	hitPoint = _hitPoint;
 
-	PRINT_NAME(_name);
 	if (!hitPoint)
-		NO_HIT_POINT_MSG(_name);
+		printNoHitPoint(_name);
 	if (!energyPoint)
-		NO_ENERGY_MSG(_name);
-	REPAIR_MSG(amount);
+		printNoEnergy(_name);
+	printRepair(_name, amount);
 	_hitPoint += amount;
 	_energyPoint -= 1;
 }

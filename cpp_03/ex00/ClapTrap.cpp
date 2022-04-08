@@ -1,8 +1,6 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-using std::string, std::cout, std::endl;
-
 /*
  *	Constructors
  */
@@ -16,7 +14,7 @@ ClapTrap::ClapTrap( void ) :
 	LOG_MSG("Default constructor called");
 }
 
-ClapTrap::ClapTrap( const string name ) :
+ClapTrap::ClapTrap( const std::string name ) :
 	_name(name),
 	_hitPoint(10),
 	_energyPoint(10),
@@ -58,24 +56,15 @@ ClapTrap & ClapTrap::operator = (const ClapTrap &rhs)
 }
 
 /*
- *	Print messages functions
- */
-
-
-static void	print_name( string name ) {
-	cout << "ClapTrap " << name << " " << endl;
-}
-
-/*
  *	Functions
  */
 
-void	ClapTrap::attack( const string& target )
+void	ClapTrap::attack( const std::string& target )
 {
 	unsigned int	energyPoint = _energyPoint;
 	unsigned int	hitPoint = _hitPoint;
 
-	print_name(_name);
+	PRINT_NAME(_name);
 	if (!hitPoint)
 		NO_HIT_POINT_MSG(_name);
 	if (!energyPoint)
