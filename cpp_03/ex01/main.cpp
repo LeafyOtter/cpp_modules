@@ -8,4 +8,5 @@ int	main(void)
 	scavtrap.attack("something wierd");
 	scavtrap.guardGate();
 	scavtrap.takeDamage(32);
+	scavtrap.beRepaired(3);
 }

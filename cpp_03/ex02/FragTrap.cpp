@@ -1,31 +1,31 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-ScavTrap::ScavTrap( void ) :
-	ClapTrap("Bruno", 100, 50, 20)
+FragTrap::FragTrap( void ) :
+	ClapTrap("Bruno", 100, 100, 30)
 {
-	LOG_MSG("Default constructor for ScavTrap called");
+	LOG_MSG("Default constructor for FragTrap called");
 }
 
-ScavTrap::ScavTrap( const std::string name ) :
-	ClapTrap(name, 100, 50, 20)
+FragTrap::FragTrap( const std::string name ) :
+	ClapTrap(name, 100, 100, 30)
 {
 	
-	LOG_MSG("Default constructor for ScavTrap called with string");
+	LOG_MSG("Default constructor for FragTrap called with string");
 }
 
-ScavTrap::ScavTrap( const ScavTrap &rhs) : ClapTrap(rhs)
+FragTrap::FragTrap( const FragTrap &rhs) : ClapTrap(rhs)
 {
-	LOG_MSG("Copy constructor for ScavTrap called");
+	LOG_MSG("Copy constructor for FragTrap called");
 }
 
-ScavTrap::~ScavTrap( void )
+FragTrap::~FragTrap( void )
 {
-	LOG_MSG("Default destructor for ScavTrap called");
+	LOG_MSG("Default destructor for FragTrap called");
 }
 
-ScavTrap & ScavTrap::operator = (const ScavTrap &rhs)
+FragTrap & FragTrap::operator = (const FragTrap &rhs)
 {
-	LOG_MSG("Copy assignement operator for ScavTrap called");
+	LOG_MSG("Copy assignement operator for FragTrap called");
 	this->_name = rhs._name;
 	this->_hitPoint = rhs._hitPoint;
 	this->_energyPoint = rhs._energyPoint;
@@ -34,17 +34,9 @@ ScavTrap & ScavTrap::operator = (const ScavTrap &rhs)
 }
 
 
-void	ScavTrap::attack( const std::string& target )
+void	FragTrap::highFivesGuys( void )
 {
-	std::cout << "ScavTrap " << _name << " ";
-	std::cout << "attacks " << target << " for ";
-	std::cout << _attackDamage << " points of damage !";
-	std::cout << std::endl;
-}
-
-void	ScavTrap::guardGate( void )
-{
-	std::cout << "Beep Boop ! Me is ScavTrap " << _name << "! ";
-	std::cout << "Me is in gate keeper mode. Beep Boop !";
+	std::cout << "Beep Boop ! Me is FragTrap " << _name << "! ";
+	std::cout << "I am asking for a high five. Come on guys. Please...";
 	std::cout << std::endl;
 }

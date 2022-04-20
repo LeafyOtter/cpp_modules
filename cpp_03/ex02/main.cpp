@@ -1,11 +1,13 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
-	ScavTrap scavtrap = ScavTrap("Bobby McBobby");
+	FragTrap fragtrap = FragTrap("Georges McGeorges");
 
-	scavtrap.attack("something wierd");
-	scavtrap.guardGate();
-	scavtrap.takeDamage(32);
+	fragtrap.attack("something wierd");
+	fragtrap.highFivesGuys();
+	fragtrap.takeDamage(32);
+	fragtrap.beRepaired(3);
 }
