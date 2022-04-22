@@ -30,6 +30,8 @@ class Form
 
 		void			beSigned( Bureaucrat bureaucrat );
 
+		virtual void	execute(Bureaucrat const & executor) const = 0;
+
 		struct GradeTooLowException : public std::exception {
 			const char*	what( void ) const throw();
 		};
