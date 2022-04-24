@@ -24,7 +24,6 @@ Dog & Dog::operator = ( const Dog &rhs )
 	LOG("Copy assignement operator for class <Dog> called");
 	if (this != &rhs) {
 		this->type = rhs.type;
-		delete _brain;
 		this->_brain = new Brain(*rhs._brain);
 	}
 	return (*this);

@@ -24,7 +24,6 @@ Cat & Cat::operator = ( const Cat &rhs )
 	LOG("Copy assignement operator for class <Cat> called");
 	if (this != &rhs) {
 		this->type = rhs.type;
-		delete _brain;
 		this->_brain = new Brain(*rhs._brain);
 	}
 	return (*this);
