@@ -1,4 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) :
 	Form("ShrubberyCreationForm", 145, 137), _target(target)
@@ -25,12 +26,47 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator = ( const ShrubberyCreat
 {
 	if (DEBUG)
 		LOG("Copy assignement operator for class <ShrubberyCreationForm> called");
+	_target = rhs._target;
 	return (*this);
 }
 
-void	executeForm(Form const & form)
+std::string	ShrubberyCreationForm::getTarget( void ) const
 {
-	std::cout << "Add tree in a file\n";
-	std::cout << "Placeholder";
-	std::cout << std::endl;
+	return (_target);
+}
+
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+	std::string		filename(this->getTarget() + "_shrubbery");
+	std::ofstream	outfile;
+	outfile.exceptions ( std::ofstream::failbit | std::ofstream::badbit );
+
+	if (executor.getGrade() > this->getGradeExec())
+		throw GradeTooLowException();
+	if (!this->getIsSigned())
+		throw FormNotSigned();
+
+	outfile.open(filename.c_str(), std::ios::in);
+	outfile << "         - - -" << "\n";
+	outfile << "       -        -  -     --    -" << "\n";
+	outfile << "    -                 -         -  -" << "\n";
+	outfile << "                    -" << "\n";
+	outfile << "                   -                --" << "\n";
+	outfile << "   -          -            -              -" << "\n";
+	outfile << "   -            '-,        -               -" << "\n";
+	outfile << "   -              'b      *" << "\n";
+	outfile << "    -              '$    #-                --" << "\n";
+	outfile << "   -    -           $:   #:               -" << "\n";
+	outfile << " --      -  --      *#  @):        -   - -" << "\n";
+	outfile << "              -     :@,@):   ,-**:'   -" << "\n";
+	outfile << "  -      -,         :@@*: --**'      -   -" << "\n";
+	outfile << "           '#o-    -:(@'-@*\"'  -" << "\n";
+	outfile << "   -  -       'bq,--:,@@*'   ,*      -  -" << "\n";
+	outfile << "              ,p$q8,:@)'  -p*'      -" << "\n";
+	outfile << "       -     '  - '@@Pp@@*'    -  -" << "\n";
+	outfile << "        -  - --    Y7'.'     -  -" << "\n";
+	outfile << "                  :@):." << "\n";
+	outfile << "                 .:@:'." << "\n";
+	outfile << "               .::(@:.      -Sam Blumenstein-" << std::endl;
+	outfile.close();
 }

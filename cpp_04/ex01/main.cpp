@@ -29,7 +29,7 @@ int main()
 	}
 	std::cout << "-----------------------------------------" << std::endl;
 	{
-		size_t	count = 6;
+		size_t	count = 4;
 		Animal*	animals[count];
 
 		for (size_t i = 0; i < count; i++){

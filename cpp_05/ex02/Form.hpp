@@ -40,6 +40,10 @@ class Form
 			const char*	what( void ) const throw();
 		};
 
+		struct FormNotSigned : public std::exception {
+			const char*	what( void ) const throw();
+		};
+
 	private:
 		Form( void );
 

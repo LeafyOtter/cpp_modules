@@ -2,7 +2,8 @@ NAME	:= caf
 
 CC = c++ -Wall -Wextra -Werror -std=c++98 -g
 
-SRCS :=	main.cpp Bureaucrat.cpp Form.cpp
+SRCS :=	main.cpp Bureaucrat.cpp Form.cpp \
+	RobotomyRequestForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp
 OBJS := $(SRCS:.cpp=.o)
 DEPS :=	$(OBJS:.o=.d)
 #FSAN := -fsanitize=leak

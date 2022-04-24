@@ -26,9 +26,10 @@ class Bureaucrat
 		uint32_t		getGrade( void ) const;
 
 		void			signForm( Form &form ) const;
+		void			executeForm(Form const & form);
 
-		void		incrementGrade( void );
-		void		decrementGrade( void );
+		void			incrementGrade( void );
+		void			decrementGrade( void );
 
 		struct GradeTooLowException : public std::exception {
 			const char*	what( void ) const throw();

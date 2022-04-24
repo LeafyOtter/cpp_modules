@@ -72,6 +72,21 @@ void	Bureaucrat::signForm( Form &form ) const
 	
 }
 
+void			executeForm(Form const & form)
+{
+	try
+	{
+		form.execute(this);
+		std::cout << this->getName() << " executed " << form.getName();
+		std::cout << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+
 void	Bureaucrat::incrementGrade( void )
 {
 	checkGrade(_grade - 1);
