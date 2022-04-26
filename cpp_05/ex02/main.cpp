@@ -4,6 +4,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main(void)
 {
@@ -12,7 +13,9 @@ int main(void)
 	Bureaucrat three("Tobby", 150);
 
 	{
-		PresidentialPardonForm form("Saolirr");
+		Intern intern();
+
+
 		one.executeForm(form);
 		three.signForm(form);
 		two.signForm(form);
@@ -20,29 +23,8 @@ int main(void)
 		three.executeForm(form);
 		two.executeForm(form);
 		one.executeForm(form);
+
+
 	}
-	std::cout << "-----------------------------------------------";
-	std::cout << "-----------------------------------------------";
-	std::cout << std::endl;
-	{
-		RobotomyRequestForm form("Mursili");
-		one.executeForm(form);
-		three.signForm(form);
-		two.signForm(form);
-		one.signForm(form);
-		three.executeForm(form);
-		two.executeForm(form);
-	}
-	std::cout << "-----------------------------------------------";
-	std::cout << "-----------------------------------------------";
-	std::cout << std::endl;
-	{
-		ShrubberyCreationForm form("home");
-		one.executeForm(form);
-		three.signForm(form);
-		two.signForm(form);
-		one.signForm(form);
-		three.executeForm(form);
-		two.executeForm(form);
-	}
+
 }
