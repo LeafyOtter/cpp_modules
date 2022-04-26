@@ -16,7 +16,7 @@ $(NAME):	${OBJS}
 	${CC} ${IFLAGS} -c $<
 
 clean:
-	rm -f *.o *.d ${NAME}
+	rm -f *.o *.d ${NAME} *_shrubbery
 
 re:	clean ${NAME}
 

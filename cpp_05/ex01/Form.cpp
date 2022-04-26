@@ -13,6 +13,7 @@ Form::Form( std::string name, int32_t gradeSign, int32_t gradeExec ) :
 {
 	checkGrade(gradeSign);
 	checkGrade(gradeExec);
+	_isSigned = false;
 	if (DEBUG)
 		LOG("Constructor of class <Form> called");
 }

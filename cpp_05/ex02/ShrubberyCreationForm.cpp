@@ -38,7 +38,8 @@ std::string	ShrubberyCreationForm::getTarget( void ) const
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	std::string		filename(this->getTarget() + "_shrubbery");
-	std::ofstream	outfile;
+	std::ofstream	outfile(filename.c_str());
+
 	outfile.exceptions ( std::ofstream::failbit | std::ofstream::badbit );
 
 	if (executor.getGrade() > this->getGradeExec())
@@ -46,7 +47,6 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	if (!this->getIsSigned())
 		throw FormNotSigned();
 
-	outfile.open(filename.c_str(), std::ios::in);
 	outfile << "         - - -" << "\n";
 	outfile << "       -        -  -     --    -" << "\n";
 	outfile << "    -                 -         -  -" << "\n";

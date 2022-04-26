@@ -72,11 +72,11 @@ void	Bureaucrat::signForm( Form &form ) const
 	
 }
 
-void			executeForm(Form const & form)
+void	Bureaucrat::executeForm(Form const & form)
 {
 	try
 	{
-		form.execute(this);
+		form.execute(*this);
 		std::cout << this->getName() << " executed " << form.getName();
 		std::cout << std::endl;
 	}
