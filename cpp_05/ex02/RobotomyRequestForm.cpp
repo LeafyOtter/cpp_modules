@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target ) :
-	Form("RobotomyRequestForm", 72, 56), _target(target)
+	Form("RobotomyRequestForm", 72, 45), _target(target)
 {
 	if (DEBUG)
 		LOG("Constructor of class <RobotomyRequestForm> called");

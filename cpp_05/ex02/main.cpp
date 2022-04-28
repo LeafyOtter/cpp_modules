@@ -4,7 +4,6 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "Intern.hpp"
 
 int main(void)
 {
@@ -13,18 +12,37 @@ int main(void)
 	Bureaucrat three("Tobby", 150);
 
 	{
-		Intern intern();
-
-
-		one.executeForm(form);
-		three.signForm(form);
-		two.signForm(form);
-		one.signForm(form);
-		three.executeForm(form);
-		two.executeForm(form);
-		one.executeForm(form);
-
-
+		PresidentialPardonForm form("Saolirr");
+		one.executeForm(form);	// not signed
+		three.signForm(form);	// not graded enough
+		two.signForm(form);		// not graded enough
+		one.signForm(form);		// success
+		three.executeForm(form);// not graded enough
+		two.executeForm(form);	// not graded enough
+		one.executeForm(form);	// success
 	}
-
+	std::cout << "-----------------------------------------------";
+	std::cout << "-----------------------------------------------";
+	std::cout << std::endl;
+	{
+		RobotomyRequestForm form("Mursili");
+		one.executeForm(form);	// not signed
+		three.signForm(form);	// not graded enough
+		two.signForm(form);		// success
+		one.signForm(form);		// already signed
+		three.executeForm(form);// not graded enough
+		two.executeForm(form);	// success
+	}
+	std::cout << "-----------------------------------------------";
+	std::cout << "-----------------------------------------------";
+	std::cout << std::endl;
+	{
+		ShrubberyCreationForm form("home");
+		one.executeForm(form);	// not signed
+		three.signForm(form);	// not graded enough
+		two.signForm(form);		// success
+		one.signForm(form);		// already signed
+		three.executeForm(form);// not graded enough
+		two.executeForm(form);	// success
+	}
 }

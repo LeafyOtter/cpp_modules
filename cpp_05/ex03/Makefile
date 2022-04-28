@@ -7,7 +7,7 @@ SRCS :=	main.cpp Bureaucrat.cpp Form.cpp Intern.cpp \
 OBJS := $(SRCS:.cpp=.o)
 DEPS :=	$(OBJS:.o=.d)
 #FSAN := -fsanitize=leak
-IFLAGS := -Wall -Wextra -Werror -std=c++98 -g -MMD -MP ${FSAN}
+IFLAGS := -MMD -MP ${FSAN}
 
 $(NAME):	${OBJS}
 	${CC} ${IFLAGS} -o $@ ${OBJS}

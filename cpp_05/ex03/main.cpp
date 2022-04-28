@@ -13,11 +13,17 @@ int main(void)
 	{
 		Intern	someRandomIntern;
 		Form	*rrf;
+		Form	*rsf;
+		Form	*rpf;
 
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		rsf = someRandomIntern.makeForm("shrubbery creation", "home");
+		rpf = someRandomIntern.makeForm("presidential pardon", "Bob");
 		one.signForm(*rrf);
 		one.executeForm(*rrf);
 		delete rrf;
+		delete rsf;
+		delete rpf;
 
 		rrf = someRandomIntern.makeForm("adawda dadwa", "hi");
 	}

@@ -54,6 +54,6 @@ Form *Intern::makeForm( std::string form, std::string target )
 			return (createForm[i](target));
 		}
 	}
-	std::cout << form << " is not a valid form" << std::endl;
+	std::cerr << form << " is not a valid form" << std::endl;
 	return (NULL);
 }
