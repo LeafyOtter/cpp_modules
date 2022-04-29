@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <istream>
 #include <sstream>
 #include <cctype>
@@ -35,18 +36,74 @@ void	printInt( std::string str )
 
 void	printFloat( std::string str )
 {
+	bool	isPossible = true;
 	float	f;
 	std::stringstream s(str);
 	s >> f;
 
-
+	if (str == "-inff" || str == "+inff" || str == "nanf")
+		isPossible = false;
+	cout << "char: ";
+	if (isPossible) {
+		if (isprint(static_cast<char>(f)))
+			cout << static_cast<char>(f);
+		else
+			cout <<  "Non displayable";	
+	}
+	else
+		cout << "impossible";
+	cout << endl;
+	cout << "int: ";
+	if (isPossible)
+		cout << static_cast<int>(f);
+	else
+		cout << "impossible";
+	cout << endl;
+	if (isPossible) {
+		cout << std::fixed << std::setprecision(1);
+		cout << "float: " << f << "f" << endl;
+		cout << "double: " << static_cast<double>(f) << endl;
+	}
+	else {
+		cout << "float: " << str << endl;
+		cout << "double: " << str.substr(0, str.length() - 1) << endl;
+	}
 }
 
 void	printDouble( std::string str )
 {
+	bool	isPossible = true;
 	double	d;
 	std::stringstream s(str);
 	s >> d;
+
+	if (str == "-inf" || str == "+inf" || str == "nan")
+		isPossible = false;
+	cout << "char: ";
+	if (isPossible) {
+		if (isprint(static_cast<char>(d)))
+			cout << static_cast<char>(d);
+		else
+			cout <<  "Non displayable";	
+	}
+	else
+		cout << "impossible";
+	cout << endl;
+	cout << "int: ";
+	if (isPossible)
+		cout << static_cast<int>(d);
+	else
+		cout << "impossible";
+	cout << endl;
+	if (isPossible) {
+		cout << std::fixed << std::setprecision(1);
+		cout << "float: " << static_cast<double>(d) << "f" << endl;
+		cout << "double: " << d << endl;
+	}
+	else {
+		cout << "float: " << str << "f" << endl;
+		cout << "double: " << str << endl;
+	}
 }
 
 int	main(int ac, char **av)
@@ -77,14 +134,3 @@ int	main(int ac, char **av)
 			break;
 	}
 }
-
-/*
- * 
- std::stringstream s(str_val);
-
-float f;
-if (s >> f) {
-    // conversion ok
-} else {
-    // conversion not ok
-}*/

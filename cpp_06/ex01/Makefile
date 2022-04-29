@@ -1,12 +1,12 @@
-NAME	:= 
+NAME	:= serialization
 
 CC = c++ -Wall -Wextra -Werror -std=c++98 -g
 
-SRCS :=	
+SRCS :=	main.cpp
 OBJS := $(SRCS:.cpp=.o)
 DEPS :=	$(OBJS:.o=.d)
 #FSAN := -fsanitize=leak
-IFLAGS := -Wall -Wextra -Werror -std=c++98 -g -MMD -MP ${FSAN}
+IFLAGS :=  -MMD -MP ${FSAN}
 
 $(NAME):	${OBJS}
 	${CC} ${IFLAGS} -o $@ ${OBJS}
