@@ -13,6 +13,8 @@ static int	isChar( const std::string &str )
 static int	isInt( const std::string &str )
 {
 	for (size_t i = 0; i < str.length(); i++) {
+		if (!i && (str[i] == '-' || str[i] == '+'))
+			continue ;
 		if (!isdigit(str[i]))
 			return (0);
 	}
@@ -36,9 +38,7 @@ static int	isFloat( const std::string &str )
 		else if (!isdigit(str[i]))
 			return (0);
 	}
-	if (flag)
-		return (1);
-	return (0);
+	return (1);
 }
 
 static int	isDouble( const std::string &str )

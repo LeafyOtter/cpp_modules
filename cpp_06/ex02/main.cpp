@@ -6,6 +6,9 @@
 #include <ctime>
 #include <iostream>
 
+#define log(x) std::cout << x << std::endl
+#define DEBUG false
+
 Base	*generate(void)
 {
 	srand(time(0));
@@ -15,12 +18,18 @@ Base	*generate(void)
 	switch (i % 3)
 	{
 		case 0:
+			if (DEBUG)
+				log("Creating A.");
 			return (new A);
 			break;
 		case 1:
+			if (DEBUG)
+				log("Creating B.");
 			return (new B);
 			break;
 		case 2:
+			if (DEBUG)
+				log("Creating C.");
 			return (new C);
 			break;
 	}
@@ -33,17 +42,17 @@ void	identify(Base *p)
 
 	ptr = dynamic_cast<A*>(p);
 	if (ptr) {
-		std::cout << "A" << std::endl;
+		std::cout << "Class was identified as <A>" << std::endl;
 		return ;
 	}
 	ptr = dynamic_cast<B*>(p);
 	if (ptr) {
-		std::cout << "B" << std::endl;
+		std::cout << "Class was identified as <B>" << std::endl;
 		return ;
 	}
 	ptr = dynamic_cast<C*>(p);
 	if (ptr) {
-		std::cout << "C" << std::endl;
+		std::cout << "Class was identified as <C>" << std::endl;
 		return ;
 	}
 	std::cout << "Error" << std::endl;
@@ -55,7 +64,7 @@ void	identify(Base &p)
 	{
 		Base &ref = dynamic_cast<A&>(p);
 		(void)ref;
-		std::cout << "A" << std::endl;
+		std::cout << "Class was identified as <A>" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
@@ -65,7 +74,7 @@ void	identify(Base &p)
 	{
 		Base &ref = dynamic_cast<B&>(p);
 		(void)ref;
-		std::cout << "B" << std::endl;
+		std::cout << "Class was identified as <B>" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
@@ -75,7 +84,7 @@ void	identify(Base &p)
 	{
 		Base &ref = dynamic_cast<C&>(p);
 		(void)ref;
-		std::cout << "C" << std::endl;
+		std::cout << "Class was identified as <C>" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
