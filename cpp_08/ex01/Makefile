@@ -1,8 +1,8 @@
-NAME	:= easyfind
+NAME	:= span
 
 CC = c++ -Wall -Wextra -Werror -std=c++98 -g
 
-SRCS :=	main.cpp
+SRCS :=	main.cpp Span.cpp
 OBJS := $(SRCS:.cpp=.o)
 DEPS :=	$(OBJS:.o=.d)
 FSAN := -fsanitize=leak

@@ -2,6 +2,9 @@
 #ifndef __SPAN_H__
 
 #include <exception>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 class Span
 {
@@ -15,19 +18,21 @@ class Span
 		int		shortestSpan( void );
 		int		longestSpan( void );
 
-		class NoNumberSpan : public std::exception {
+		void	fill( int max );
+
+		class InvalidNumberSpanException : public std::exception {
 			const char*	what( void ) const throw();
 		};
 
-		class UniqueNumberSpan : public std::exception {
+		class SpanFullException : public std::exception {
 			const char*	what( void ) const throw();
 		};
 
 	private:
 		Span( void );
 
-		int				*_ptr;
-		unsigned int	_N;
+		unsigned int		_N;
+		std::vector<int>	_v;	
 };
 
 #endif
